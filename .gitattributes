@@ -2,3 +2,6 @@
 *.jsx linguist-language=JavaScript
 *.ts linguist-language=TypeScript
 *.tsx linguist-language=TypeScript
+
+path/to/directory/* linguist-vendored
+path/to/file linguist-vendored
