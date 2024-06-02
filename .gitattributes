@@ -1,7 +1,4 @@
-# Set JavaScript as the primary language for .js and .jsx files
 *.js linguist-language=JavaScript
 *.jsx linguist-language=JavaScript
-
-# Set TypeScript as the primary language for .ts and .tsx files
 *.ts linguist-language=TypeScript
 *.tsx linguist-language=TypeScript
