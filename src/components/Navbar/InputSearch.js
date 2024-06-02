@@ -24,11 +24,11 @@ const InputSearch = () => {
       <input
         type="text"
         placeholder="Search Anime ..."
-        className="flex glassmorphism px-4"
+        className=" w-full flex glassmorphism px-4"
         ref={searchValue}
         onKeyDown={handleKeyDown}
       />
-      <button type="button" className="absolute end-32" onClick={handleInput}>
+      <button type="button" className="absolute end-5 md:end-32" onClick={handleInput}>
         <FaSearch size={20} />
       </button>
     </div>

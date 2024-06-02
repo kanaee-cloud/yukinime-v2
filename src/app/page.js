@@ -10,7 +10,7 @@ const Page = async () => {
 
   return (
     <>
-    <section>
+    <section className="p-4">
       <Header title="Most Popular" linkHref="/popular" linkTitle="See All" />
       <AnimeList api={topAnime} />
     </section>
