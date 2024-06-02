@@ -2,7 +2,7 @@ import AnimeList from "./components/AnimeList";
 
 const Home = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`
   );
   const anime = await response.json();
   // console.log(anime)
@@ -20,6 +20,7 @@ const Home = async () => {
                   rate={data.score}
                   type={data.type}
                   episodes={data.episodes}
+                  id={data.mal_id}
                 />
               </div>
             );

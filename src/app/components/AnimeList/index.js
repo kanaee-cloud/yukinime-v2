@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar } from 'react-icons/fa';
 
-const AnimeList = ({ title, images, rate, type, episodes }) => {
+const AnimeList = ({ title, images, rate, type, episodes, id }) => {
   return (
+    <Link href={`/${id}`} className="cursor-pointer">
     <div className="relative group">
       <Image
         src={images}
@@ -16,7 +18,7 @@ const AnimeList = ({ title, images, rate, type, episodes }) => {
             
             {title}
           </p>
-          <div className="flex items-center gap-x-4 mt-2 w-full">
+          <div className="flex items-center gap-x-2 lg:gap-x-4 mt-2 w-full">
             <p className="text-[0.7rem] text-[#f9d949] lg:text-sm border border-[#f9d949] rounded-md px-3">{type}</p>
             <p className="text-[0.7rem] lg:text-sm flex items-center">
             <FaStar className="mr-1 text-yellow-400" /> 
@@ -29,6 +31,7 @@ const AnimeList = ({ title, images, rate, type, episodes }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
