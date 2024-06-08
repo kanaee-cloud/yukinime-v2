@@ -1,32 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body{
-    font-family: 'Poppins' sans-serif;
+body {
+  font-family: "Poppins" sans-serif;
 }
 
-.glassmorphism{
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 20px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+section {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
 }
 
-img{
-    width: 100%;
-    height: auto;
-    transition: .3s ease all;
-    -webkit-transition: .3 ease all;
-    -moz-transition: .3 ease all;
-    -ms-transition: .3 ease all;
-    -o-transition: .3 ease all;  
+.glassmorphism {
+  background: rgb(15 23 42);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-img:hover{
+.neumorphism {
+  border-radius: 32px;
+  background: #0f172a;
+  box-shadow: -20px -20px 28px #090d18, 20px 20px 28px #15213c;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  transition: 0.3s ease all;
+  -webkit-transition: 0.3 ease all;
+  -moz-transition: 0.3 ease all;
+  -ms-transition: 0.3 ease all;
+  -o-transition: 0.3 ease all;
+}
+
+card:hover {
   scale: 102%;
 }
 
@@ -37,29 +48,52 @@ img:hover{
   white-space: nowrap;
 }
 
-.gradient{
-  background: rgb(39,27,255);
-  background: linear-gradient(90deg, rgba(39,27,255,1) 0%, rgba(0,89,181,1) 35%, rgba(0,212,255,1) 100%);
+.gradient {
+  background: rgb(39, 27, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(39, 27, 255, 1) 0%,
+    rgba(0, 89, 181, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }
 
+/* Custom scrollbar styles */
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #3ABEF9;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
 @layer base {
-    body {
-      @apply text-lg leading-8 text-white  bg-responsive lg:bg-main bg-fixed bg-cover bg-no-repeat;
-    }
-    .btn {
-      @apply text-white font-medium;
-    }
-    .btn-sm {
-      @apply h-[40px] px-2 text-sm;
-    }
-    .btn-medium {
-      @apply h-[48px] w-full px-2 text-sm;
-    }
-    .btn-link {
-      @apply text-base;
-    }
-    .section {
-      @apply py-8 lg:py-24 lg:h-screen flex items-center;
-    }
+  body {
+    @apply text-lg leading-8 text-white  bg-responsive lg:bg-main bg-fixed bg-cover bg-no-repeat;
   }
-  
+  .btn {
+    @apply text-white font-medium;
+  }
+  .btn-sm {
+    @apply h-[40px] px-2 text-sm;
+  }
+  .btn-medium {
+    @apply h-[48px] w-full px-2 text-sm;
+  }
+  .btn-link {
+    @apply text-base;
+  }
+  .section {
+    @apply py-8 lg:py-24 lg:h-screen flex items-center;
+  }
+}

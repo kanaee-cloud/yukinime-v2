@@ -8,29 +8,28 @@ const InputSearch = () => {
   const router = useRouter();
 
   const handleInput = (event) => {
-    event.preventDefault();
-    const keyword = searchValue.current.value;
-    router.push(`/search/${keyword}`);
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      handleInput(event);
+    if (event.key === 'Enter' || event.type === "click") {
+      event.preventDefault();
+      const keyword = searchValue.current.value;
+      router.push(`/search/${keyword}`);
     }
   };
 
+  
+
   return (
     <div className="flex items-center">
+      <button type="button" className="absolute ml-3 z-50" onClick={handleInput}>
+        <FaSearch size={15} />
+      </button>
       <input
         type="text"
         placeholder="Search Anime ..."
-        className=" w-full flex glassmorphism px-4"
+        className=" w-full flex bg-blue-500 px-8 p-1 placeholder:text-sm neumorphism" 
         ref={searchValue}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleInput}
       />
-      <button type="button" className="absolute end-5 md:end-32" onClick={handleInput}>
-        <FaSearch size={20} />
-      </button>
+      
     </div>
   );
 };

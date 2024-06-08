@@ -3,7 +3,7 @@ import AnimeList from "../components/AnimeList";
 
 const Page = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=10`
   );
   const topAnime = await response.json();
   // console.log(anime)
@@ -11,7 +11,7 @@ const Page = async () => {
   return (
     <>
     <section className="p-4">
-      <Header title="Most Popular" linkHref="/popular" linkTitle="See All" />
+      <Header title="Most Popular" linkHref="/popular"/>
       <AnimeList api={topAnime} />
     </section>
       
