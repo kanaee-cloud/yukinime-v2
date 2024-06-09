@@ -61,6 +61,7 @@ card:hover {
 /* Custom scrollbar styles */
 .scroll-container::-webkit-scrollbar {
   height: 8px;
+  width: 8px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
@@ -73,7 +74,7 @@ card:hover {
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: rgb(15 23 42);
 }
 
 
