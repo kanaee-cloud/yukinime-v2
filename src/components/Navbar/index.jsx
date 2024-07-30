@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className='flex justify-between p-3 items-center'>
         {/* Logo */}
         <a href="#" className='font-semibold  text-[1.2rem] lg:text-2xl'>
-        Yuki<span className='text-[#17e9e1]'>nime!</span>
+        Yuki<span className='text-color-accent'>nime!</span>
         </a>
         {/* searchbar*/}
         <InputSearch />

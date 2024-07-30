@@ -5,9 +5,9 @@ import { FaStar } from "react-icons/fa";
 const AnimeList = ({ api }) => {
   return (
     <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 ">
-      {api.data.map((anime, index) => {
+      {api.data?.map((anime, index) => {
         return (
-          <Link href={`/${anime.mal_id}`} className="cursor-pointer">
+          <Link href={`/anime/${anime.mal_id}`} className="cursor-pointer">
             <div 
               className="relative group neumorphism transform transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
               key={index}
@@ -17,6 +17,7 @@ const AnimeList = ({ api }) => {
                 width={600}
                 height={600}
                 className="h-[42vh] lg:h-[58vh] rounded-lg"
+                alt={anime.title}
               />
               <div className="absolute p-3 inset-0 bg-gradient-to-t from-black rounded-lg transition-opacity duration-300 flex items-end">
                 <div className="w-full">

@@ -7,6 +7,11 @@ body {
   font-family: "Poppins" sans-serif;
 }
 
+img {
+  width: auto;
+  height: auto;
+}
+
 section {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity));
@@ -21,10 +26,25 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.neumorphism {
-  border-radius: 32px;
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-blue {
+  border-radius: 145px;
   background: #0f172a;
-  box-shadow: -20px -20px 28px #090d18, 20px 20px 28px #15213c;
+  box-shadow: 8px 8px 17px #060911, -8px -8px 17px #182543;
+}
+
+.neumorphism {
+  border-radius: 50px;
+  background: #0c0a24;
+  box-shadow: 20px 20px 8px #05040f, -20px -20px 8px #131039;
 }
 
 .card {
@@ -65,7 +85,7 @@ card:hover {
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: #3ABEF9;
+  background-color: #3abef9;
   border-radius: 4px;
 }
 
@@ -77,10 +97,9 @@ card:hover {
   background-color: rgb(15 23 42);
 }
 
-
 @layer base {
   body {
-    @apply text-lg leading-8 text-white  bg-responsive lg:bg-main bg-fixed bg-cover bg-no-repeat;
+    @apply text-lg leading-8 text-color-white bg-responsive lg:bg-main bg-fixed bg-cover bg-no-repeat;
   }
   .btn {
     @apply text-white font-medium;
