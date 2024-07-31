@@ -13,10 +13,10 @@ const AnimeList = ({ api }) => {
               key={index}
               >
               <Image
-                src={anime.images.webp.image_url}
+                src={anime.images.jpg.image_url}
                 width={600}
                 height={600}
-                className="h-[42vh] lg:h-[58vh] rounded-lg"
+                className="h-[40vh] lg:h-[48vh] rounded-lg"
                 alt={anime.title}
               />
               <div className="absolute p-3 inset-0 bg-gradient-to-t from-black rounded-lg transition-opacity duration-300 flex items-end">

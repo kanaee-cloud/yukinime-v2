@@ -36,7 +36,7 @@ const Page = async ({ params: { id } }) => {
             <iframe
               src={anime.data.trailer.embed_url}
               frameBorder="0"
-              className="w-full h-full object-cover pointer-events-auto z-10"
+              className="w-full h-full mx-auto object-cover pointer-events-auto z-10"
             ></iframe>
             <div className="absolute inset-0 bg-[linear-gradient(153deg,rgba(0,0,0,0.83)_0%,rgba(0,0,0,0.41)_20%)] pointer-events-none"></div>
           </div>
@@ -88,7 +88,7 @@ const Page = async ({ params: { id } }) => {
             </div>
           </div>
         </div>
-        <div className="container flex flex-col lg:flex-row mx-auto px-5 gap-5">
+        <div className="container flex flex-col justify-between lg:flex-row mx-auto px-5 gap-5">
           <div className="flex justify-center lg:justify-start lg:w-[350px] lg:h-[350px]">
             <Image
               src={anime.data.images.jpg.large_image_url}
@@ -138,15 +138,24 @@ const Page = async ({ params: { id } }) => {
         </div>
         <div className="container mx-auto px-5 mt-10">
           <div className="grid md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-6 mt-6">
-            <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-110 transition-all rounded-lg">
-              <button>
-                <Link href={`/anime/${anime.data.mal_id}/characters`}>
-                  Character
-                </Link>
-              </button>
-              <MdNavigateNext />
-            </div>
-
+            <Link href={`/anime/${anime.data.mal_id}/characters`}>
+              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+                <button>Character</button>
+                <MdNavigateNext />
+              </div>
+            </Link>
+            <Link href={`/anime/${anime.data.mal_id}/episodes`}>
+              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+                <button>Episode</button>
+                <MdNavigateNext />
+              </div>
+            </Link>
+            <Link href={`/anime/${anime.data.mal_id}/streaming`}>
+              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+                <button>Streaming</button>
+                <MdNavigateNext />
+              </div>
+            </Link>
           </div>
         </div>
       </section>

@@ -10,14 +10,22 @@ const Page = async () => {
   // console.log(anime)
 
   const topAnime = await getAnimeResponse("top/anime", "limit=5");
+  const seasonAnime = await getAnimeResponse("seasons/now", "limit=5");
 
   return (
     <>
-    <section className="p-4">
-      <Header title="Most Popular" linkHref="/popular" linkTitle="See All"/>
-      <AnimeList api={topAnime} />
-    </section>
-      
+      <section className="p-4">
+        <Header title="Most Popular" linkHref="/popular" linkTitle="See All" />
+        <AnimeList api={topAnime} />
+      </section>
+      <section className="p-4">
+        <Header
+          title="Airing Now"
+          linkHref="/airing"
+          linkTitle="See All"
+        />
+        <AnimeList api={seasonAnime} />
+      </section>
     </>
   );
 };

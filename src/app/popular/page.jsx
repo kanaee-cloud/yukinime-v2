@@ -29,7 +29,7 @@ const Page = () => {
   return (
     <>
       <section className="p-4">
-        <HeaderMenu title="Greatest Of All Time" from="By Yukinime" />
+        <HeaderMenu title="Greatest Of All Time" from="By Yukinime" href={"/airing"} next={"Airing"}/>
         <AnimeList api={topAnime} />
         <Pagination
           page={page}
