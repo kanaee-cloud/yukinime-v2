@@ -1,10 +1,12 @@
 import React from 'react';
 import InputSearch from './InputSearch';
-import { RxHamburgerMenu } from "react-icons/rx";
+import UserAction from './UserAction';
+
 
 
 
 const Navbar = () => {
+  
   return (
   <header className='py-8'>
     <div className='container mx-auto glassmorphism px-2'>
@@ -15,9 +17,7 @@ const Navbar = () => {
         </a>
         {/* searchbar*/}
         <InputSearch />
-        <button type="">
-        <RxHamburgerMenu />
-        </button>
+        <UserAction />
       </div>
      
     </div>

@@ -1,8 +1,10 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 const AnimeList = ({ api }) => {
+
   return (
     <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 ">
       {api.data?.map((anime, index) => {
@@ -16,10 +18,10 @@ const AnimeList = ({ api }) => {
                 src={anime.images.jpg.image_url}
                 width={600}
                 height={600}
-                className="h-[40vh] lg:h-[48vh] rounded-lg"
+                className="h-[42vh] lg:h-[48vh] rounded-lg"
                 alt={anime.title}
               />
-              <div className="absolute p-3 inset-0 bg-gradient-to-t from-black rounded-lg transition-opacity duration-300 flex items-end">
+              <div className="absolute px-4 py-4 inset-0 bg-gradient-to-t from-black rounded-lg transition-opacity duration-300 flex items-end">
                 <div className="w-full">
                   <p className="text-sm md:text-[0.9rem] font-semibold truncate">
                     {anime.title}
@@ -33,7 +35,7 @@ const AnimeList = ({ api }) => {
                       {anime.score}
                     </p>
                     <p className="text-[0.7rem] lg:text-sm flex items-center">
-                      {anime.episodes} eps
+                      {anime.episodes !== null ? ` ${anime.episodes} eps` : "Airing"}
                     </p>
                   </div>
                 </div>
