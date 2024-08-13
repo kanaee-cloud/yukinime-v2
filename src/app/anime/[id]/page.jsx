@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/app/libs/api-libs";
+import { getAnimeResponse } from "../../../app/libs/api-libs";
 import { FaStar, FaBroadcastTower } from "react-icons/fa";
 import { PiRankingThin } from "react-icons/pi";
 import { MdFavoriteBorder, Md18UpRating } from "react-icons/md";
