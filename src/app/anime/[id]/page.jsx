@@ -31,14 +31,13 @@ const Page = async ({ params: { id } }) => {
   return (
     <>
       <section className="pb-8">
-        <div className="relative w-full h-[50vh]">
+        <div className="relative w-full h-[60vh]">
           <div className="relative w-full h-full">
             <iframe
               src={anime.data.trailer.embed_url}
               frameBorder="0"
               className="w-full h-full mx-auto object-cover pointer-events-auto z-10"
             ></iframe>
-            <div className="absolute inset-0 bg-[linear-gradient(153deg,rgba(0,0,0,0.83)_0%,rgba(0,0,0,0.41)_20%)] pointer-events-none"></div>
           </div>
         </div>
         <div className="container flex flex-col sm:flex-row flex-wrap py-6 px-5 mx-auto">

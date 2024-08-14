@@ -2,6 +2,7 @@ import Link from "next/link";
 import { authUserSession } from "../../libs/auth-libs";
 import Image from "next/image";
 import Background from "../../../assets/profile-bg.jpg";
+import Collection from "../../../assets/collection.jpg"
 
 const Page = async () => {
   const user = await authUserSession();
@@ -36,12 +37,20 @@ const Page = async () => {
           </div>
         </div>
         <div className="flex justify-end p-4">
-          <Link href="/api/auth/signout">
-            Logout
-          </Link>
+          <Link href="/api/auth/signout">Logout</Link>
         </div>
-        <div className="p-4 text-center">
-          <p className="text-lg font-semibold">My Collection</p>
+        <div className="p-8">
+          <Link href="/users/dashboard/collection">
+            <div className="flex flex-col gap-y-2">
+              <Image 
+                src={Collection}
+                alt="Collection"
+                className="w-44 rounded-lg"
+              />
+              <h1 className="text-sm">My Collection</h1>
+              <p className="text-xs opacity-30">by {user.name}</p>
+            </div>
+          </Link>
         </div>
       </section>
     </>
