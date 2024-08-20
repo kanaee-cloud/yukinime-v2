@@ -9,13 +9,13 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 
 model Collection{
-  id            Int @id @default(autoincrement())
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
   anime_mal_id  String
   user_email    String
   anime_image   String
