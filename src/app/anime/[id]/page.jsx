@@ -8,9 +8,18 @@ import { MdNavigateNext } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import CollectionButton from "../../../components/AnimeList/CollectionButton";
+import { authUserSession } from "../../libs/auth-libs";
+import { CiCircleCheck } from "react-icons/ci";
+import prisma from "../../libs/prisma";
 
 const Page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
+  const user = await authUserSession();
+  const collection = await prisma.collection.findFirst({
+    where: { user_email: user?.email, anime_mal_id: id },
+  });
+  console.log(collection);
 
   function formatMembersCount(members) {
     let formattedNumbers = Math.floor(members / 1000);
@@ -85,6 +94,25 @@ const Page = async ({ params: { id } }) => {
                 </div>
               </div>
             </div>
+            {user ? (
+              <div>
+                {!collection ? (
+                  <CollectionButton
+                    anime_mal_id={id}
+                    user_email={user?.email}
+                    anime_image={anime.data.images.jpg.large_image_url}
+                    anime_name={anime.data.title}
+                  />
+                ) : (
+                  <p className="bg-[#f9d949] text-[#0c0a24] flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg font-semibold">
+                    <CiCircleCheck />
+                    Added to Collection
+                  </p>
+                )}
+              </div>
+            ) : (
+              <Link href="/api/auth/signin" className="bg-[#f9d949] text-[#0c0a24] font-semibold flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg">Sign In</Link>
+            )}
           </div>
         </div>
         <div className="container flex flex-col justify-between lg:flex-row mx-auto px-5 gap-5">

@@ -18,7 +18,7 @@ const AnimeList = ({ api }) => {
                 src={anime.images.jpg.image_url}
                 width={600}
                 height={600}
-                className="h-[42vh] lg:h-[48vh] rounded-lg"
+                className="w-full lg:h-[52vh] rounded-lg"
                 alt={anime.title}
               />
               <div className="absolute px-4 py-4 inset-0 bg-gradient-to-t from-black rounded-lg transition-opacity duration-300 flex items-end">

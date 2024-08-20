@@ -1,17 +1,26 @@
-import React from 'react'
-import img from "../assets/not-found.gif"
-import Image from 'next/image'
+"use client"
+import React from "react";
+import img from "../assets/not-found.gif";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
-  return (
-    <div>
-      <div className='flex flex-col justify-center items-center'>
-        <Image src={img} className='mt-10'/>
-        <h1 className='font-semibold text-2xl'>404 Not Found ;(</h1>
-      </div>
-    </div>
-    
-  )
-}
 
-export default Page
+  const router = useRouter();
+
+  return (
+    <>
+      <section className="p-4">
+        <div className="h-full">
+          <div className="h-full flex flex-col justify-center items-center">
+            <Image src={img}  width={200} height={350} className="w-30 h-full"/>
+            <h1 className="font-semibold text-xl">404 Not Found ;(</h1>
+            <button onClick={() => router.back()} classname="underline">Back</button>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Page;

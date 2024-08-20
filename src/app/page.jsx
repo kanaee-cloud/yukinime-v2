@@ -14,11 +14,11 @@ const Page = async () => {
 
   return (
     <>
-      <section className="p-4">
+      <section className="p-4 lg:p-7">
         <Header title="Most Popular" linkHref="/popular" linkTitle="See All" />
         <AnimeList api={topAnime} />
       </section>
-      <section className="p-4">
+      <section className="p-4 lg:p-7">
         <Header
           title="Airing Now"
           linkHref="/airing"
