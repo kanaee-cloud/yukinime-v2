@@ -34,7 +34,7 @@ const CollectionButton = ({ anime_mal_id, user_email, anime_image, anime_name })
       ) : (
         <button
           onClick={handleCollection}
-          className="btn-action flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg"
+          className="btn-action w-full flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg"
         >
           <FaBookmark />
           Add to Collection

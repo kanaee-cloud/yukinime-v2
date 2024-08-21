@@ -97,7 +97,7 @@ const Page = async ({ params: { id } }) => {
               </div>
             </div>
             {user ? (
-              <div>
+              <div className="mt-3 lg:mt-0">
                 {!collection ? (
                   <CollectionButton
                     anime_mal_id={id}

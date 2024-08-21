@@ -38,6 +38,7 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_name, user_ima
 
   return (
     <div className="w-3/4 flex flex-col gap-y-4">
+      <h1 className="text-sm font-semibold">Start Conversation Now!</h1>
       {isCreated && (
         <div className="flex items-center gap-x-2"> 
           <FaCheck className="text-green-500" />
@@ -47,6 +48,7 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_name, user_ima
       <textarea
         onChange={handleInput}
         value={comment}
+        placeholder="Say Something ..."
         className="px-4 py-2 glass-morphism outline-none"
       ></textarea>
       <div className="flex justify-end">
