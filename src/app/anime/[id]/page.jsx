@@ -8,6 +8,8 @@ import { MdNavigateNext } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import CommentInput from "../../../components/AnimeList/CommentInput";
+import CommentBox from "../../../components/AnimeList/CommentBox";
 import CollectionButton from "../../../components/AnimeList/CollectionButton";
 import { authUserSession } from "../../libs/auth-libs";
 import { CiCircleCheck } from "react-icons/ci";
@@ -111,7 +113,12 @@ const Page = async ({ params: { id } }) => {
                 )}
               </div>
             ) : (
-              <Link href="/api/auth/signin" className="bg-[#f9d949] text-[#0c0a24] font-semibold flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg">Sign In</Link>
+              <Link
+                href="/api/auth/signin"
+                className="bg-[#f9d949] text-[#0c0a24] font-semibold flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg"
+              >
+                Sign In
+              </Link>
             )}
           </div>
         </div>
@@ -166,24 +173,28 @@ const Page = async ({ params: { id } }) => {
         <div className="container mx-auto px-5 mt-10">
           <div className="grid md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-6 mt-6">
             <Link href={`/anime/${anime.data.mal_id}/characters`}>
-              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+              <div className="flex items-center p-4 justify-between glassmorphism hover:text-color-accent hover:scale-75 transition-all rounded-lg">
                 <button>Character</button>
                 <MdNavigateNext />
               </div>
             </Link>
             <Link href={`/anime/${anime.data.mal_id}/episodes`}>
-              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+              <div className="flex items-center p-4 justify-between glassmorphism hover:text-color-accent hover:scale-75 transition-all rounded-lg">
                 <button>Episode</button>
                 <MdNavigateNext />
               </div>
             </Link>
             <Link href={`/anime/${anime.data.mal_id}/streaming`}>
-              <div className="flex items-center p-4 justify-between bg-[#0e0949] hover:text-color-accent hover:scale-75 transition-all rounded-lg">
+              <div className="flex items-center p-4 justify-between glassmorphism hover:text-color-accent hover:scale-75 transition-all rounded-lg">
                 <button>Streaming</button>
                 <MdNavigateNext />
               </div>
             </Link>
           </div>
+        </div>
+        <div className="mt-10 container mx-auto items-center gap-y-6 flex flex-col">
+          <CommentInput anime_mal_id={id} user_email={user?.email} username={user?.name} user_image={user?.image} anime_name={anime.data.title}/>
+          <CommentBox anime_mal_id={id}/>
         </div>
       </section>
     </>

@@ -23,3 +23,14 @@ model Collection{
 
   @@unique([user_email, anime_mal_id, anime_image, anime_name])
 }
+
+model Comment{
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  anime_mal_id  String 
+  user_email    String
+  comment       String
+  username      String
+  user_image    String
+  anime_name    String 
+  createdAt     DateTime @default(now())
+}
