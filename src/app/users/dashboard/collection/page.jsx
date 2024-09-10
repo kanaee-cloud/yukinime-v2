@@ -1,16 +1,21 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { authUserSession } from "../../../libs/auth-libs";
 import Background from "../../../../assets/collection-bg.jpg";
 import Collection from "../../../../assets/collection.jpg";
 import prisma from "../../../libs/prisma";
+import CollectionItem from "../../../../components/AnimeList/CollectionItem";
 
 const Page = async () => {
   const user = await authUserSession();
   const collection = await prisma.collection.findMany({
     where: { user_email: user.email },
   });
-  console.log(collection);
+  // console.log(collection);
+
+
+
 
   return (
     <>
@@ -45,27 +50,11 @@ const Page = async () => {
           <div className="gap-4 items-center sm:grid-cols-1 lg:grid-cols-2 grid">
             {collection.map((collect, index) => {
               return (
-                <div
-                  key={index}
-                  className="glassmorphism w-full transition-transform duration-300 ease-in-out transform hover:scale-105"
-                >
-                  <Link href={`/anime/${collect.anime_mal_id}`}>
-                    <div className="flex">
-                      <Image
-                        src={collect.anime_image}
-                        alt=""
-                        width={350}
-                        height={350}
-                        className="w-32 rounded-l-[20px]"
-                      />
-                      <div className="p-4">
-                        <h1 className="font-semibold  text-sm text-justify">
-                          {collect.anime_name}
-                        </h1>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
+                <CollectionItem
+                key={index}
+                collect={collect}
+                userEmail = {user.email}
+              />
               );
             })}
           </div>

@@ -12,3 +12,21 @@ export async function POST(request){
         return Response.json({ status:200, isCreated: true })
     }
 }
+
+export async function DELETE(request){
+    const { anime_mal_id, user_email } = await request.json()
+
+    const deleteCollection = await prisma.collection.deleteMany({
+        where : {
+            anime_mal_id: anime_mal_id,
+            user_email: user_email
+        }
+    })
+
+    if(!deleteCollection){
+        return new Response(JSON.stringify({ status:500, isDeleted: false}), { status: 500 })
+    } else {
+        return new Response(JSON.stringify({ status:200, isDeleted: true}), { status: 200 })
+    }
+    
+}

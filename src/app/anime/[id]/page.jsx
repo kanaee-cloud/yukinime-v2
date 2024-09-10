@@ -12,7 +12,7 @@ import CommentInput from "../../../components/AnimeList/CommentInput";
 import CommentBox from "../../../components/AnimeList/CommentBox";
 import CollectionButton from "../../../components/AnimeList/CollectionButton";
 import { authUserSession } from "../../libs/auth-libs";
-import { CiCircleCheck } from "react-icons/ci";
+import { FaCircleCheck } from "react-icons/fa6";
 import prisma from "../../libs/prisma";
 
 const Page = async ({ params: { id } }) => {
@@ -107,7 +107,7 @@ const Page = async ({ params: { id } }) => {
                   />
                 ) : (
                   <p className="bg-[#f9d949] text-[#0c0a24] flex items-center text-sm px-4 py-2 gap-x-2 rounded-lg font-semibold">
-                    <CiCircleCheck />
+                   <FaCircleCheck />
                     Added to Collection
                   </p>
                 )}

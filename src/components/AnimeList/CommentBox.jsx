@@ -22,7 +22,7 @@ const CommentBox = async ({ anime_mal_id }) => {
               className="rounded-full shadow-lg"
             />
             <div>
-              <h1 className="font-semibold text-sm">"{comment.comment}"</h1>
+              <h1 className="font-light text-sm">"{comment.comment}"</h1>
               <p className="text-xs opacity-40">by {comment.username}</p>
               <p className="text-[10px]">{formattedDate}</p>
             </div>
