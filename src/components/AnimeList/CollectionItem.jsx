@@ -8,7 +8,6 @@ import { TiDeleteOutline } from "react-icons/ti";
 const CollectionItem = ({ collect, userEmail }) => {
   const handleDelete = async (anime_mal_id) => {
     try {
-      
       Swal.fire({
         title: "Apakah kamu yakin?",
         text: "Kamu tidak bisa mengembalikan item ini!",
