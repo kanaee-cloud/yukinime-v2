@@ -1,5 +1,5 @@
 import React from 'react'
-import img from "../assets/not-found.gif"
+import img from "../../public/assets/not-found.gif"
 import Image from 'next/image'
 
 const Page = () => {

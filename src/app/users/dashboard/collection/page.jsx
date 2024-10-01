@@ -1,9 +1,8 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { authUserSession } from "../../../libs/auth-libs";
-import Background from "../../../../assets/collection-bg.jpg";
-import Collection from "../../../../assets/collection.jpg";
+import Background from "../../../../../public/assets/collection-bg.jpg";
+import Collection from "../../../../../public/assets/collection.jpg";
 import prisma from "../../../libs/prisma";
 import CollectionItem from "../../../../components/AnimeList/CollectionItem";
 
@@ -13,9 +12,6 @@ const Page = async () => {
     where: { user_email: user.email },
   });
   // console.log(collection);
-
-
-
 
   return (
     <>
@@ -51,10 +47,10 @@ const Page = async () => {
             {collection.map((collect, index) => {
               return (
                 <CollectionItem
-                key={index}
-                collect={collect}
-                userEmail = {user.email}
-              />
+                  key={index}
+                  collect={collect}
+                  userEmail={user.email}
+                />
               );
             })}
           </div>

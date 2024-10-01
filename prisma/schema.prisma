@@ -34,3 +34,15 @@ model Comment{
   anime_name    String 
   createdAt     DateTime @default(now())
 }
+
+model User{
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email        String    @unique
+  password     String?
+  name         String?
+  image        String?
+  authProvider String
+  githubId     String?
+
+  @@index([ email, authProvider ])
+}

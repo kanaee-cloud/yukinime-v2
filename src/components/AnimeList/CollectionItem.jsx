@@ -18,7 +18,6 @@ const CollectionItem = ({ collect, userEmail }) => {
         confirmButtonText: "Ya, hapus!",
       }).then(async (result) => {
         if (result.isConfirmed) {
-          
           const response = await fetch("/api/v1/collection", {
             method: "DELETE",
             headers: {
@@ -60,16 +59,16 @@ const CollectionItem = ({ collect, userEmail }) => {
             <h1 className="font-semibold text-sm text-justify">
               {collect.anime_name}
             </h1>
-            <button
-              className="mt-2 bg-red-500 text-white px-3 py-1 rounded"
-              onClick={() => handleDelete(collect.anime_mal_id)}
-            >
-              <TiDeleteOutline />
-            </button>
           </div>
         </div>
       </a>
-      {/* Tombol Hapus */}
+      <button
+        className="mt-2 bg-red-500 text-white z-50 px-3 py-1 rounded"
+        onClick={() => handleDelete(collect.anime_mal_id)}
+      >
+        <TiDeleteOutline />
+      </button>
+      
     </div>
   );
 };
