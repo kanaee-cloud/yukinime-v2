@@ -8,7 +8,7 @@ import { MdNavigateNext } from "react-icons/md";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import Collection from '../../../assets/collection.jpg';
+import Collection from '../../../../public/assets/collection.jpg';
 import CommentInput from "../../../components/AnimeList/CommentInput";
 import CommentBox from "../../../components/AnimeList/CommentBox";
 import CollectionButton from "../../../components/AnimeList/CollectionButton";
