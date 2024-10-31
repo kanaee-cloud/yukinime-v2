@@ -1,12 +1,33 @@
+"use client"
 import React from 'react';
 import InputSearch from './InputSearch';
 import UserAction from './UserAction';
+import WelcomePage from "../WelcomePage/index";
+import { usePathname } from 'next/navigation';
+import { getAnimeResponse } from '../../app/libs/api-libs';
+import NavDashboard from '../NavDashboard';
+
 
 
 
 
 const Navbar = () => {
+  const pathname = usePathname()
+
+  const noNavbarPaths = [
+    /^\/auth\/signin$/,
+    /^\/auth\/register$/,
+    /^\/users\/.*$/,  
+  ]
   
+  const hideNavbar = noNavbarPaths.some((path) => path.test(pathname))
+
+  if(hideNavbar){
+    return null
+  }
+
+ 
+
   return (
   <header className='py-8'>
     <div className='container mx-auto glassmorphism px-2'>

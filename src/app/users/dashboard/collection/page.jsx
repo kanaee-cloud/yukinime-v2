@@ -1,21 +1,35 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { authUserSession } from "../../../libs/auth-libs";
+import { useEffect, useState } from "react";
 import Background from "../../../../../public/assets/collection-bg.jpg";
 import Collection from "../../../../../public/assets/collection.jpg";
-import prisma from "../../../libs/prisma";
 import CollectionItem from "../../../../components/AnimeList/CollectionItem";
 
-const Page = async () => {
-  const user = await authUserSession();
-  const collection = await prisma.collection.findMany({
-    where: { user_email: user.email },
-  });
-  // console.log(collection);
+const Page = () => {
+  const [collection, setCollection] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/api/collection");
+        const data = await response.json();
+        setCollection(data.collection || []);
+        setUser(data.user || null);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  if (!user) return <p>Loading...</p>; // Optional loading state
 
   return (
     <>
-      <section className="">
+      <main className="h-screen">
         <div className="relative w-full h-[30vh] lg:h-[40vh] md:h-[40vh]">
           <div className="relative w-full h-full">
             <Image
@@ -26,7 +40,7 @@ const Page = async () => {
             />
           </div>
           <div className="absolute inset-0 bg-[linear-gradient(153deg,rgba(0,0,0,0.83)_0%,rgba(0,0,0,0.41)_20%)] pointer-events-none">
-            <div className="flex flex-row items-center  p-4 gap-x-4 h-full px-6 md:px-10">
+            <div className="flex flex-row items-center p-4 gap-x-4 h-full px-6 md:px-10">
               <Image
                 src={Collection}
                 alt="User Image"
@@ -34,9 +48,7 @@ const Page = async () => {
               />
               <div className="flex flex-col gap-y-2 md:gap-y-3 md:text-left">
                 <p className="text-xs">Collection</p>
-                <p className="text-3xl md:text-5xl font-bold">
-                  Anime Collection
-                </p>
+                <p className="text-3xl md:text-5xl font-bold">Anime Collection</p>
                 <p className="text-xs md:text-sm opacity-70">by {user.name}</p>
               </div>
             </div>
@@ -44,18 +56,16 @@ const Page = async () => {
         </div>
         <div className="container mx-auto mt-4 p-4">
           <div className="gap-4 items-center sm:grid-cols-1 lg:grid-cols-2 grid">
-            {collection.map((collect, index) => {
-              return (
-                <CollectionItem
-                  key={index}
-                  collect={collect}
-                  userEmail={user.email}
-                />
-              );
-            })}
+            {collection.map((collect, index) => (
+              <CollectionItem
+                key={index}
+                collect={collect}
+                userEmail={user.email}
+              />
+            ))}
           </div>
         </div>
-      </section>
+      </main>
     </>
   );
 };

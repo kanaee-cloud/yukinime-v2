@@ -8,11 +8,15 @@ import Pagination from '../../components/Utilities/Pagination';
 
 const Page = () => {
   const [page, setPage] = useState(1);
-  const [airAnime, setAirAnime] = useState([]);
+  const [airAnime, setAirAnime] = useState({});
 
   const fetchData = async () => {
-    const airingAnime = await getAnimeResponse('seasons/now', `page=${page}`);
-    setAirAnime(airingAnime);
+    try {
+      const airingAnime = await getAnimeResponse('seasons/now', `page=${page}`);
+      setAirAnime(airingAnime);
+    } catch (error) {
+      console.error('Failed to fetch airing anime:', error);
+    }
   }
 
   useEffect(() => {
