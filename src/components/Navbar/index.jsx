@@ -11,7 +11,7 @@ import NavDashboard from '../NavDashboard';
 
 
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const pathname = usePathname()
 
   const noNavbarPaths = [
@@ -38,7 +38,7 @@ const Navbar = () => {
         </a>
         {/* searchbar*/}
         <InputSearch />
-        <UserAction />
+        <UserAction userData={user}/>
       </div>
      
     </div>

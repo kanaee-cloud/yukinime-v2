@@ -1,31 +1,16 @@
-"use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Background from "../../../../../public/assets/collection-bg.jpg";
 import Collection from "../../../../../public/assets/collection.jpg";
 import CollectionItem from "../../../../components/AnimeList/CollectionItem";
+import { authUserSession } from "../../../libs/auth-libs";
+import prisma from "../../../libs/prisma";
 
-const Page = () => {
-  const [collection, setCollection] = useState([]);
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/api/collection");
-        const data = await response.json();
-        setCollection(data.collection || []);
-        setUser(data.user || null);
-      } catch (error) {
-        console.error("Failed to fetch data:", error);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  if (!user) return <p>Loading...</p>; // Optional loading state
+const Page = async () => {
+  const user = await authUserSession();
+  const collection = await prisma.collection.findMany({
+    where: { user_email: user.email },
+  })
 
   return (
     <>

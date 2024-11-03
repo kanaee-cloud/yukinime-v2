@@ -2,8 +2,8 @@ import React from "react";
 import { authUserSession } from "../../app/libs/auth-libs";
 import { BsListNested } from "react-icons/bs";
 
-const Header = async () => {
-  const user = await authUserSession();
+const Header = ({ user }) => {
+  
 
   return (
     <div className="flex justify-end md:justify-end py-3 px-3 mb-3">

@@ -30,3 +30,26 @@ export async function DELETE(request){
     }
     
 }
+
+export async function GET(request) {
+    const { searchParams } = new URL(request.url);
+    const user_email = searchParams.get('user_email');
+    const anime_mal_id = searchParams.get('anime_mal_id');
+
+    if (!user_email || !anime_mal_id) {
+        return new Response(JSON.stringify({ status: 400, error: "Missing parameters" }), { status: 400 });
+    }
+
+    const collection = await prisma.collection.findFirst({
+        where: {
+            user_email: user_email,
+            anime_mal_id: anime_mal_id,
+        },
+    });
+
+    if (!collection) {
+        return new Response(JSON.stringify({ status: 404, error: "Collection not found" }), { status: 404 });
+    }
+
+    return new Response(JSON.stringify({ status: 200, collection }), { status: 200 });
+}

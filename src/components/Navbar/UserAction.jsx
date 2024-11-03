@@ -7,13 +7,13 @@ import { authUserSession } from "../../app/libs/auth-libs";
 import { FiLogIn } from "react-icons/fi";
 // import NoProfile from "../../assets/no-profile.jpg";
 
-const UserAction = async () => {
-  const user = await authUserSession();
-  const actionLabel = user ? (
+const UserAction =  ({ userData }) => {
+  
+  const actionLabel = userData ? (
     <>
     <div className="hover:bg-[#2c1f7f] p-1 rounded-full transition-all">
       <img 
-        src={user.image ? user.image : "/assets/no-profile.jpg"} 
+        src={userData.image ? userData.image : "/assets/no-profile.jpg"} 
         alt="" 
         className="w-10 rounded-full" />
     </div>
@@ -25,7 +25,7 @@ const UserAction = async () => {
       </div>
     </>
   );
-  const actionURL = user ? "/users/dashboard" : "/auth/signin";
+  const actionURL = userData ? "/users/dashboard" : "/auth/signin";
   // console.log(user.email)
   return (
     <div>

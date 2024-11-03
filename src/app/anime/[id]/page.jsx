@@ -130,6 +130,7 @@ const Page = async ({ params: { id } }) => {
               width={350}
               height={350}
               className="rounded-md object-cover w-full h-full"
+              alt={`Cover for ${anime.data.title}`}
             />
           </div>
           <div className="flex flex-col lg:w-full">
@@ -178,7 +179,7 @@ const Page = async ({ params: { id } }) => {
                 <div className="flex flex-col gap-y-2 bg-[#070d1b] hover:bg-gray-500 transition-colors duration-300 p-4 rounded-lg">
                   <Image
                     src={Collection}
-                    alt="Collection"
+                    alt="Episodes"
                     className="w-44 rounded-lg"
                   />
                   <h1 className="text-sm">Episodes</h1>
@@ -190,7 +191,7 @@ const Page = async ({ params: { id } }) => {
                 <div className="flex flex-col gap-y-2 bg-[#070d1b] hover:bg-gray-700 transition-colors duration-300 p-4 rounded-lg">
                   <Image
                     src={Collection}
-                    alt="Collection"
+                    alt="Streaming"
                     className="w-44 rounded-lg"
                   />
                   <h1 className="text-sm">Streaming</h1>
@@ -202,7 +203,7 @@ const Page = async ({ params: { id } }) => {
                 <div className="flex flex-col gap-y-2 bg-[#070d1b] hover:bg-gray-700 transition-colors duration-300 p-4 rounded-lg">
                   <Image
                     src={Collection}
-                    alt="Collection"
+                    alt="Character"
                     className="w-44 rounded-lg"
                   />
                   <h1 className="text-sm">Characters</h1>

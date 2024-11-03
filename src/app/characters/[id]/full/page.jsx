@@ -15,6 +15,7 @@ const Page = async ({ params: { id } }) => {
               src={anime.data.images.jpg.image_url}
               width={200}
               height={350}
+              alt={`Cover for ${anime.data.name}`}
             />
           </div>
           <div>

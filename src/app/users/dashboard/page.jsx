@@ -5,6 +5,7 @@ import Image from "next/image";
 import Background from "../../../../public/assets/profile-bg.jpg";
 import NoProfile from "../../../../public/assets/no-profile.jpg";
 import prisma from "../../libs/prisma";
+import ClientCollection from "../../../components/AnimeList/ClientCollection";
 import CollectionCard from "../../../components/AnimeList/CollectionCard";
 
 const Page = async () => {
@@ -74,7 +75,7 @@ const Page = async () => {
       {/* <ImageUpload userId={user.id}/> */}
       <div className="mt-10">
         <h1>Favorite Anime</h1>
-      <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 mt-5">
+        <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 mt-5">
         {collection.slice(0, 5).map((collect, index) => {
           return (
             <CollectionCard

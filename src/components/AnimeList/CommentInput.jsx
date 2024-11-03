@@ -2,37 +2,47 @@
 
 import { useState } from "react";
 import { IoMdSend } from "react-icons/io";
-// import { useRouter } from "next/router";
 import { FaCheck } from "react-icons/fa6";
+import { FaSpinner } from "react-icons/fa"; // Import ikon spinner untuk loading
 
-const CommentInput = ({ anime_mal_id, user_email, username, anime_name, user_image}) => {
+const CommentInput = ({ anime_mal_id, user_email, username, anime_name, user_image }) => {
   const [comment, setComment] = useState("");
   const [isCreated, setIsCreated] = useState(false);
-//   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false); // State untuk loading
 
   const handleInput = (event) => {
     setComment(event.target.value);
   };
 
-  function handleRefresh() {
+  const handleRefresh = () => {
     window.location.reload();
-  }
+  };
 
   const handlePost = async (event) => {
     event.preventDefault();
+    setIsLoading(true); // Set loading state ke true
 
     const data = { anime_mal_id, user_email, comment, username, anime_name, user_image };
 
-    const response = await fetch("/api/v1/comment", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/v1/comment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    const postComment = await response.json();
-    if (postComment.isCreated) {
-      setIsCreated(true);
-      setComment("");
-      handleRefresh()
+      const postComment = await response.json();
+      if (postComment.isCreated) {
+        setIsCreated(true);
+        setComment("");
+        handleRefresh();
+      }
+    } catch (error) {
+      console.error("Error posting comment:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,9 +65,19 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_name, user_ima
         <button
           onClick={handlePost}
           className="btn-action flex gap-x-4 items-center px-4 py-3 rounded-lg text-sm font-semibold"
+          disabled={isLoading}
         >
-          Post Comment
-          <IoMdSend />
+          {isLoading ? (
+            <>
+              <FaSpinner className="animate-spin mr-2" /> 
+              Posting...
+            </>
+          ) : (
+            <>
+              Post Comment
+              <IoMdSend />
+            </>
+          )}
         </button>
       </div>
     </div>

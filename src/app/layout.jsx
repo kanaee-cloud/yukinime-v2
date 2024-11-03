@@ -1,6 +1,7 @@
 import { Lexend } from "next/font/google";
 import Navbar from "../components/Navbar/index.jsx";
 import "./globals.css";
+import { authUserSession } from "./libs/auth-libs.js";
 // import { useRouter } from "next/router";
 
 const lexend = Lexend({
@@ -13,9 +14,11 @@ export const metadata = {
   description: "Yukinime but is next",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   // const router = useRouter()
   // const noNavbarPaths = ['/auth/signin', '/auth/register']
+
+  const userData = await authUserSession();
 
   return (
     <html lang="en">
@@ -23,7 +26,7 @@ export default function RootLayout({ children }) {
         className={`${lexend.className} overflow-y-auto scroll-container`}
         suppressHydrationWarning={true}
       >
-        <Navbar />
+        <Navbar user={userData}/>
         {children}
       </body>
     </html>

@@ -7,12 +7,11 @@ const AnimeList = ({ api }) => {
 
   return (
     <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 gap-6 ">
-      {api.data?.map((anime, index) => {
+      {api.data?.map((anime) => {
         return (
-          <Link href={`/anime/${anime.mal_id}`} className="cursor-pointer">
+          <Link href={`/anime/${anime.mal_id}`} className="cursor-pointer" key={anime.mal_id}>
             <div 
               className="relative group neumorphism transform transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
-              key={index}
               >
               <Image
                 src={anime.images.jpg.image_url}
