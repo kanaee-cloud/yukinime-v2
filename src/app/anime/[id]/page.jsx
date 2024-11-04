@@ -16,7 +16,8 @@ import { authUserSession } from "../../libs/auth-libs";
 import { FaCircleCheck } from "react-icons/fa6";
 import prisma from "../../libs/prisma";
 
-const Page = async ({ params: { id } }) => {
+const Page = async ({ params }) => {
+  const { id } = params;
   const anime = await getAnimeResponse(`anime/${id}`);
   const user = await authUserSession();
   const collection = await prisma.collection.findFirst({

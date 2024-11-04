@@ -2,7 +2,8 @@ import { getAnimeResponse } from "../../../../app/libs/api-libs";
 import Image from "next/image";
 import React from "react";
 
-const Page = async ({ params: { id } }) => {
+const Page = async ({ params }) => {
+  const { id } = params;
   const anime = await getAnimeResponse(`characters/${id}/full`);
   console.log(anime);
 

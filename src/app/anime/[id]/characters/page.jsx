@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Page = async ({ params: { id } }) => {
+const Page = async ({ params }) => {
+  const { id } = params;
   const anime = await getAnimeResponse(`anime/${id}/characters`);
   console.log(anime);
 
